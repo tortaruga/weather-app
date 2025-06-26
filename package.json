@@ -4,6 +4,22 @@
     "tailwindcss": "^4.1.11"
   },
   "scripts": {
-    "dev": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch"
-  }
+    "dev": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch --content ./*.{html,js}"
+  },
+  "name": "weather-app",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tortaruga/weather-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tortaruga/weather-app/issues"
+  },
+  "homepage": "https://github.com/tortaruga/weather-app#readme",
+  "description": ""
 }
