@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="/dist/output.css">
+</head>
+<body class="m-0 relative min-h-[100vh]">     
+    <!-- blurred bg -->   
+    <img src="./images/evening.jpg" class="absolute inset-0 w-dvw h-full object-cover z-0" alt="" aria-hidden="true">
+    <div class="absolute inset-0 bg-white/10 backdrop-blur-2xl w-dvw h-full pointer-events-none"></div>
+  
+    <main class="z-30 relative px-4 py-10">  
+        <label for="city-input" class="bg-amber-50/70  flex rounded-[30px] max-w-3xl m-auto">  
+            <input class="p-4 rounded-[inherit] w-full" placeholder="enter city..." type="text" name="city-input" id="city-input"> 
+        </label>
+  
+        <div class="weather-container relative shadow-2xl md:aspect-video text-gray-100 my-12 rounded-2xl max-w-3xl mx-auto">        
+            <img src="./images/evening.jpg" alt="" class="weather-bg rounded-2xl object-cover w-full h-full absolute" />  
+            
+            <div class="content bg-black/20 relative w-full rounded-2xl h-full flex md:flex-row flex-col items-center justify-between">  
+            <div class="text-center py-7  w-full">    
+              <p class="px-4 relative z-20 text-2xl">city</p> 
+              <img src="./images/sunny.svg" alt="" class="m-auto max-w-50 relative z-20" />    
+            </div>
+             
+            <div class="w-full text-center" >
+                 <p class="px-4 relative z-20 text-5xl">25°</p>  
+              <p class="px-4 relative text-3xl z-20">cloudy</p>
+               <div class="stats px-4 py-7 relative z-20 flex justify-between w-full">   
+                <div class="humidity"> 
+                    <p>humidity</p> 
+                    <p>value</p>
+                </div>
+
+                <div class="wind relative z-20">
+                    <p>wind</p>
+                    <p>value</p>
+                </div>
+            </div>
+            </div>
+            
+            </div>
+        </div>
+
+    </main> 
+
+    <footer>
+        <!-- credits -->
+    </footer>
+    
+</body> 
+</html>
