@@ -4,7 +4,8 @@ const eveningImg = './images/evening.jpg';
 const cityInput = document.getElementById('city-input');
 let city = 'seoul'; 
 
-fetch(`/netlify/functions/fetchWeatherData?city=${encodeURIComponent(city)}`)
+function fetchData() {
+    fetch(`/netlify/functions/fetchWeatherData?city=${encodeURIComponent(city)}`)
 .then(response => response.json())
 .then(data => {
     const code = data.current.condition.code;
@@ -21,6 +22,8 @@ fetch(`/netlify/functions/fetchWeatherData?city=${encodeURIComponent(city)}`)
 
     handleBackgroundImg(time);
 });
+
+}
 
 function handleBackgroundImg(time) {
     let isDay;
