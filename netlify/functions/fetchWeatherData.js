@@ -1,5 +1,5 @@
 exports.handler = async(e) => {
-    const key = process.env.APY_KEY;
+    const key = process.env.API_KEY; 
     const city  = e.queryStringParameters.city; 
     
     if (!city) {
