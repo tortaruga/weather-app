@@ -8,7 +8,7 @@
 </head>
 <body class="m-0 relative min-h-[100vh]">     
     <!-- blurred bg --> 
-    <img src="./images/evening.jpg" class="absolute inset-0 w-dvw h-full object-cover z-0" alt="" aria-hidden="true">
+    <img src="./images/evening.jpg" class="bg-img absolute inset-0 w-dvw h-full object-cover z-0" alt="" aria-hidden="true">
     <div class="absolute inset-0 bg-white/10 backdrop-blur-2xl w-dvw h-full pointer-events-none"></div>
   
     <main class="z-30 relative px-4 py-10">  
@@ -17,26 +17,26 @@
         </label>
 
         <div class="weather-container relative shadow-2xl md:aspect-video text-gray-100 my-12 rounded-2xl max-w-3xl mx-auto">        
-            <img src="./images/evening.jpg" alt="" class="weather-bg rounded-2xl object-cover w-full h-full absolute" />  
+            <img src="./images/evening.jpg" alt="" class="bg-img weather-bg rounded-2xl object-cover w-full h-full absolute" />  
             
             <div class="content bg-black/20 relative w-full rounded-2xl h-full flex md:flex-row flex-col items-center justify-between">  
             <div class="text-center py-7  w-full">    
-              <p class="px-4 relative z-20 text-2xl">city</p> 
-              <img src="./images/sunny.svg" alt="" class="m-auto max-w-50 relative z-20" />    
+              <p id="city" class="px-4 relative z-20 text-2xl">city</p> 
+              <img src="./images/sunny.svg" id="weather-icon" alt="" class="m-auto max-w-50 relative z-20" />    
             </div>
              
             <div class="w-full text-center" >
-                 <p class="px-4 relative z-20 text-5xl">25°</p>  
-              <p class="px-4 relative text-3xl z-20">cloudy</p>
+                 <p id="temp" class="px-4 relative z-20 text-5xl">25°</p>  
+              <p id="condition" class="px-4 relative text-3xl z-20">cloudy</p>
                <div class="stats px-4 py-7 relative z-20 flex justify-between w-full">   
                 <div class="humidity"> 
                     <p>humidity</p> 
-                    <p>value</p>
+                    <p id="humidity">value</p>
                 </div>
 
                 <div class="wind relative z-20">
                     <p>wind</p>
-                    <p>value</p>
+                    <p id="wind">value</p>
                 </div>
             </div>
             </div>
@@ -50,5 +50,6 @@
         <!-- credits -->
     </footer>
     
+    <script src="./app.js"></script>
 </body> 
 </html>
