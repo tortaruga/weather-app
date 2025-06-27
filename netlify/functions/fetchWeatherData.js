@@ -1,7 +1,7 @@
-exports.handler = async(e) => {
+export async function handler(e) {
     const key = process.env.API_KEY; 
     const city  = e.queryStringParameters.city; 
-    
+
     if (!city) {
         return {
             statusCode: 400,
@@ -9,7 +9,14 @@ exports.handler = async(e) => {
         }
     }
 
-    const response = await fetch(`http://api.weatherapi.com/v1/current.json?key=${key}&q=${encodeURIComponent(city)}&aqi=no`);
+    if (!key) {
+        return {
+            statusCode: 400,
+            body: JSON.stringify({ error: "Missing key" })
+        }
+    }
+
+    const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=${key}&q=${encodeURIComponent(city)}&aqi=no`);
     const data = await response.json();
 
     return {
@@ -17,4 +24,4 @@ exports.handler = async(e) => {
     body: JSON.stringify(data),
   };
 
-}
+} 

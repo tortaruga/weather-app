@@ -4,24 +4,25 @@ const eveningImg = './images/evening.jpg';
 const cityInput = document.getElementById('city-input');
 let city = 'seoul'; 
 
-function fetchData() {
-    fetch(`/netlify/functions/fetchWeatherData?city=${encodeURIComponent(city)}`)
-.then(response => response.json())
-.then(data => {
-    const code = data.current.condition.code;
+function fetchData() {  
+    fetch(`/.netlify/functions/fetchWeatherData?city=${city}`)
+  .then(response => response.json())
+  .then(data => {
+    console.log(data)
+    const code = data.current?.condition.code;
 
-    const time = new Date(data.location.localtime);
-    const location = data.location.name;
-    const temp = data.current.temp_c;
-    const condition = data.current.condition.text;
-    const humidity = data.current.humidity;
-    const wind = data.current.wind_kph;
+    const time = new Date(data.location?.localtime);
+    const location = data.location?.name;
+    const temp = data.current?.temp_c;
+    const condition = data.current?.condition.text;
+    const humidity = data.current?.humidity;
+    const wind = data.current?.wind_kph;
     
     handleDataDisplay(location, temp, condition, humidity, wind);
     handleWeatherIcon(code);
 
-    handleBackgroundImg(time);
-});
+    handleBackgroundImg(time); 
+  });
 
 }
 
