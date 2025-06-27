@@ -17,11 +17,10 @@ function fetchData() {
 })
   .then(data => {
 
-    if (data.error.code == 1006) {
+    if (data.error?.code == 1006) {
         message = data.error.message;
         handleError(); 
     }
-
     const code = data.current.condition.code;
 
     const time = new Date(data.location.localtime);
