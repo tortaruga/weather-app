@@ -3,27 +3,48 @@ const eveningImg = './images/evening.jpg';
 
 const cityInput = document.getElementById('city-input');
 let city = 'seoul'; 
+let message = '';
 
 function fetchData() {  
-    fetch(`/.netlify/functions/fetchWeatherData?city=${city}`)
-  .then(response => response.json())
-  .then(data => {
-    console.log(data)
-    const code = data.current?.condition.code;
+    message = '';  
 
-    const time = new Date(data.location?.localtime);
-    const location = data.location?.name;
-    const temp = data.current?.temp_c;
-    const condition = data.current?.condition.text;
-    const humidity = data.current?.humidity;
-    const wind = data.current?.wind_kph;
+    fetch(`/.netlify/functions/fetchWeatherData?city=${city}`)
+  .then(response => {
+    if (!response.ok) {
+            throw new Error(`Error! Status: ${response.status}`);
+        }
+    return response.json();
+})
+  .then(data => {
+
+    if (data.error.code == 1006) {
+        message = data.error.message;
+        handleError(); 
+    }
+
+    const code = data.current.condition.code;
+
+    const time = new Date(data.location.localtime);
+    const location = data.location.name;
+    const temp = data.current.temp_c;
+    const condition = data.current.condition.text;
+    const humidity = data.current.humidity;
+    const wind = data.current.wind_kph;
     
     handleDataDisplay(location, temp, condition, humidity, wind);
     handleWeatherIcon(code);
 
     handleBackgroundImg(time); 
-  });
-
+  })
+  .catch(error => {
+          if (error.message.includes("Failed to fetch")) {
+            message = 'Network error! Please check your internet connection.';
+          } else {
+            message = "An unexpected error occurred. Try again later.";
+          }
+          handleError();
+          console.error("Error:", error);
+        });
 }
 
 function handleBackgroundImg(time) {
@@ -113,4 +134,18 @@ function handleWeatherIcon(code) {
         }
 
         document.getElementById('weather-icon').src = iconSrc;
+}
+
+function handleError() {
+    if (message !== '') {
+        document.querySelector('.wrapper').classList.add('hidden');
+        document.querySelector('.error').classList.remove('hidden');
+        document.querySelector('.error').classList.add('flex');
+        document.querySelector('.error').textContent = message; 
+
+    } else {
+        document.querySelector('.error').classList.add('hidden');
+        document.querySelector('.error').classList.remove('flex');
+        document.querySelector('.wrapper').classList.remove('hidden');
+    }
 }
