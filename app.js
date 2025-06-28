@@ -8,7 +8,7 @@ let message = '';
 function fetchData() {  
     message = '';  
 
-    fetch(`/.netlify/functions/fetchWeatherData?city=${city}`)
+   fetch(`/.netlify/functions/fetchWeatherData?city=${encodeURIComponent(city)}`)
   .then(response => {
     if (!response.ok) {
             throw new Error(`Error! Status: ${response.status}`);
@@ -17,10 +17,6 @@ function fetchData() {
 })
   .then(data => {
 
-    if (data.error?.code == 1006) {
-        message = data.error.message;
-        handleError(); 
-    }
     const code = data.current.condition.code;
 
     const time = new Date(data.location.localtime);
@@ -38,11 +34,9 @@ function fetchData() {
   .catch(error => {
           if (error.message.includes("Failed to fetch")) {
             message = 'Network error! Please check your internet connection.';
-          } else {
-            message = "An unexpected error occurred. Try again later.";
           }
           handleError();
-          console.error("Error:", error);
+        //   console.error("Error:", error);
         });
 }
 
