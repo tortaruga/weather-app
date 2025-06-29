@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./images/favicon.svg" type="image/svg+xml">
     <title>Weather App</title>
     <link rel="stylesheet" href="./src/output.css"> 
 </head>
-<body class="m-0 relative min-h-[100vh]">     
+<body class="m-0 relative min-h-[100vh] max-w-dvw overflow-x-hidden">      
     <!-- blurred bg --> 
     <img src="./images/evening.jpg" class="bg-img absolute inset-0 w-dvw h-full object-cover z-0" alt="" aria-hidden="true">
     <div class="absolute inset-0 bg-white/10 backdrop-blur-2xl w-dvw h-full pointer-events-none"></div>
@@ -19,26 +20,26 @@
         <div class="weather-container relative shadow-2xl md:aspect-video text-gray-100 my-12 rounded-2xl max-w-3xl mx-auto min-h-[500px]">        
             <img src="./images/evening.jpg" alt="" class="bg-img weather-bg rounded-2xl object-cover w-full h-full absolute" />  
             
-            <div class="content bg-black/20 relative w-full rounded-2xl h-full flex md:flex-row flex-col items-center justify-between min-h-[500px]">  
+            <div class="content bg-black/30  relative w-full rounded-2xl h-full flex md:flex-row flex-col items-center justify-between min-h-[500px]">  
              <div class="error text-center hidden bg-black/10 rounded-[inherit] w-full h-full absolute justify-center items-center">Something went wrong. Try again.</div>
-             <div class="wrapper w-full h-full"> 
+             <div class="wrapper w-full h-full flex md:flex-row flex-col items-center justify-between">  
               <div class="text-center py-7 w-full">    
                 <p id="city" class="px-4 relative z-20 text-2xl">city</p> 
                 <img src="./images/sunny.svg" id="weather-icon" alt="" class="m-auto max-w-50 relative z-20" />    
               </div>
             
-              <div class="w-full text-center" >
+              <div class="w-full text-center md:flex flex-col items-center justify-center gap-12  h-full " >
                  <p id="temp" class="px-4 relative z-20 text-5xl">25°</p>  
                  <p id="condition" class="px-4 relative text-3xl z-20">cloudy</p>
                  <div class="stats px-4 py-7 relative z-20 flex justify-between w-full">   
                    <div class="humidity"> 
-                    <p>humidity</p> 
-                    <p id="humidity">value</p>
+                    <p class="flex gap-2 items-center"> humidity <img src="./images/humidity.svg" class="w-4" alt=""></p> 
+                    <p id="humidity" class="text-[20px]">value</p>
                    </div>
 
                    <div class="wind relative z-20">
-                    <p>wind</p>
-                    <p id="wind">value</p>
+                    <p class="flex gap-2 items-center">wind <img src="./images/wind.svg" class="w-4" alt=""></p>
+                    <p id="wind" class="text-[20px]">value</p>
                    </div>
                  </div>
               </div>
@@ -48,8 +49,12 @@
 
     </main> 
 
-    <footer>
+    <footer class="relative z-20 p-3 text-center text-sm text-gray-900">  
         <!-- credits -->
+         <p>Built with <a class="underline" href="https://www.weatherapi.com/" target="_blank"> weather api</a>.
+        Images by <a class="underline" href="https://www.freepik.com/author/pikisuperstar" target="_blank">pikisuperstar</a> on freepik.
+        Icons by <a class="underline" href="https://www.svgrepo.com/" target="_blank">SVGRepo</a>.</p>
+        <p>Coded by <a class="underline" href="https://github.com/tortaruga" target="_blank">tortaruga</a>.</p>
     </footer>
     
     <script src="./app.js" type="module"></script> 
