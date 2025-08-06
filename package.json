@@ -1,15 +1,14 @@
 {
-  "dependencies": {
-    "@tailwindcss/cli": "^4.1.11",
-    "tailwindcss": "^4.1.11"
-  },
   "scripts": {
     "dev": "npx @tailwindcss/cli -i ./src/input.css -o ./src/output.css --watch --content ./*.{html,js}"
   },
   "name": "weather-app",
   "version": "1.0.0",
   "main": "app.js",
-  "devDependencies": {},
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.11",
+    "tailwindcss": "^4.1.11"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/tortaruga/weather-app.git"

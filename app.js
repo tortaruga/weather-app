@@ -1,4 +1,4 @@
-const dayImg = './images/day.jpg';
+const dayImg = './images/day2.jpg';
 const eveningImg = './images/evening.jpg';
 
 const cityInput = document.getElementById('city-input');
@@ -36,7 +36,7 @@ function fetchData() {
             message = 'Network error! Please check your internet connection.';
           }
           handleError();
-        //   console.error("Error:", error);
+          console.error("Error:", error);
         });
 }
 
@@ -51,6 +51,17 @@ function handleBackgroundImg(time) {
     document.querySelectorAll('.bg-img').forEach(img => {
         isDay ? img.src = dayImg : img.src = eveningImg 
     })
+
+    document.querySelectorAll('.color-change').forEach(element => {
+        if (isDay) {
+            element.classList.remove('text-indigo-400');
+            element.classList.add('text-orange-200');
+        } else {
+            element.classList.remove('text-orange-200');
+            element.classList.add('text-indigo-400');
+        }
+    })
+
 }
 
 fetchData();
@@ -64,7 +75,9 @@ function handleDataDisplay(location, temp, condition, humidity, wind) {
 }
 
 
-cityInput.addEventListener('input', () => {
+
+document.getElementById('search-weather-form').addEventListener('submit', (e) => {
+    e.preventDefault();
     city = cityInput.value;
     fetchData();
 })
@@ -123,7 +136,7 @@ function handleWeatherIcon(code) {
             code === 1252 ||
             code === 1117
         ) {
-            iconSrc = './images/blizzard.svg';
+            iconSrc = './images/snowy.svg';
         }
 
         document.getElementById('weather-icon').src = iconSrc;
